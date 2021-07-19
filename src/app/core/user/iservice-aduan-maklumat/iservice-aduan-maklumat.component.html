@@ -1,0 +1,122 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">Aduan dan Maklumat</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-hand-holding-heart text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="row d-flex align-items-center">
+          <div class="col-lg-3 bg-yellow d-flex justify-content-center">
+            <i class="far fa-file-alt fa-10x text-default my-3"></i>
+          </div>
+          <div class="col">
+            <h5 class="h3 text-muted text-uppercase mb-0 ml-2">Parameter:</h5>
+            <h5 class="h1 ml-2">
+              Membuat Aduan
+              <span><i class="fas fa-exclamation-triangle"></i></span>
+            </h5>
+          </div>
+          <div class="col-3 d-flex justify-content-center">
+            <button
+              class="btn btn-icon btn-lg btn-2 btn-secondary"
+              type="button"
+            >
+              <span class="btn-inner--icon"
+                ><i class="ni ni-bold-right"></i
+              ></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col">
+        <div class="card">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"
+                    >Nama</label
+                  >
+                  <input class="form-control" type="text" id="example-text-input" />
+                </div>
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"
+                    >Jenis Aduan</label
+                  >
+                  <select class="form-control" id="exampleFormControlSelect1">
+                    <option>Jenis 1</option>
+                    <option>Jenis 2</option>
+                    <option>Jenis 3</option>
+                    <option>Jenis 4</option>
+                    <option>Jenis 5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"
+                    >Aduan</label
+                  >
+                  <textarea
+                    class="form-control"
+                    id="exampleFormControlTextarea1"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="example-text-input" class="form-control-label"
+                    >Rating</label
+                  >
+    
+                  <div class="col-lg-12 mb-3">
+                    <rating
+                      class="ml-2"
+                      [max]="5"
+                      [(ngModel)]="y"
+                      [customTemplate]="tt"
+                    ></rating>
+    
+                    <ng-template #tt let-i="index" let-v="value">
+                      <button
+                        class="btn btn-{{ i < v ? 'success' : 'secondary' }} ml-3"
+                      >
+                        {{ i < v ? " &#9733; " : " &#9734; " }}
+                      </button>
+                    </ng-template>
+                  </div>
+    
+                  <div class="col-lg-12">
+                    <div class="form-group">
+                      <label
+                        >Sila nyatakan cadangan tuan/puan untuk penambahbaikan kami
+                        di jabatan ini.</label
+                      >
+                      <textarea class="form-control" rows="4"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>

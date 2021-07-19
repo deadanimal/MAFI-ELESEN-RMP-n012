@@ -1,0 +1,130 @@
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">FAQ</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-question-circle text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card bg-gradient-success">
+        <div class="card-body">
+          <div class="row mb-4">
+            <div class="col">
+              <h5 class="h1 mb-0 text-white text-center">
+                Selamat sejahtera. Apa yang boleh kami bantu?
+              </h5>
+            </div>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-5 px-1 my-2">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Default input"
+              />
+            </div>
+            <div class="col-auto px-1 my-2">
+              <button class="btn btn-secondary" type="button">Cari</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="text-indigo text-center my-3">
+                <i class="fas fa-search fa-7x"></i>
+              </div>
+              <h5 class="h3 text-center">Carian Info</h5>
+            </div>
+            <div class="col-lg-4">
+              <div class="text-warning text-center my-3">
+                <i class="fas fa-cog fa-7x"></i>
+              </div>
+              <h5 class="h3 text-center">Tetapan dan Peranti</h5>
+            </div>
+            <div class="col-lg-4">
+              <div class="text-primary text-center my-3">
+                <i class="fas fa-user fa-7x"></i>
+              </div>
+              <h5 class="h3 text-center">Pengurusan Akaun</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="text-yellow text-center my-3">
+                <i class="fas fa-file-alt fa-7x"></i>
+              </div>
+              <h5 class="h3 text-center">Borang Pemohonan</h5>
+            </div>
+            <div class="col-lg-4">
+              <div class="text-success text-center my-3">
+                <i class="fas fa-tools fa-7x"></i>
+              </div>
+              <h5 class="h3 text-center">Masalah dan Pembaikan</h5>
+            </div>
+            <div class="col-lg-4">
+              <div class="text-danger text-center my-3">
+                <i class="fas fa-shield-alt fa-7x"></i>
+              </div>
+              <h5 class="h3 text-center">Keselamatan Maklumat</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="h3 mb-0">Soalan & Jawapan</h5>
+        </div>
+        <div class="card-body">
+          <accordion [isAnimated]="true">
+            <accordion-group>
+              <h5 class="mb-0" accordion-heading>
+                -- Soalan --
+              </h5>
+              <p>-- Ruang jawapan --</p>
+            </accordion-group>
+          </accordion>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+    <livechat-widget
+      #liveChatWidget
+      licenseId="11082047"
+      (onChatLoaded)="onChatLoaded($event)"
+      (onChatWindowOpened)="onChatWindowOpened()"
+      (onChatWindowMinimized)="onChatWindowMinimized()"
+      [visitor]=""
+      [params]=""
+    ></livechat-widget>
+  </footer>

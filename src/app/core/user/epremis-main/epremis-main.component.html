@@ -1,0 +1,700 @@
+<div class="header pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <div class="row align-items-center py-4">
+                <div class="col-lg-6 col-7">
+                    <h6 class="h2 text-dark d-inline-block mb-0">Dashboard e-Premis/Kilang</h6>
+                    <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+                        <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+                            <li class=" breadcrumb-item">
+                                <a href="javascript:void(0)"> <i class="fas fa-home text-dark"> </i> </a>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h5 class="h3 mb-0">Lokasi Premis</h5>
+                </div>
+                <div class="card-body">
+                    <div id="container">
+                        <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h5 class="h3 mb-0">Senarai premis/kilang</h5>
+                </div>
+                <div class="card-body">
+                    <!-- table -->
+                    <div class=" table-responsive">
+                        <table class=" table align-items-center table-flush">
+                            <thead class=" thead-light">
+                                <tr>
+                                    <th scope="col">Page name</th>
+
+                                    <th scope="col">Visitors</th>
+
+                                    <th scope="col">Unique users</th>
+
+                                    <th scope="col">Bounce rate</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <th scope="row">/argon/</th>
+
+                                    <td>4,569</td>
+
+                                    <td>340</td>
+
+                                    <td>
+                                        <i class=" fas fa-arrow-up text-success mr-3"> </i> 46,53%
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">/argon/index.html</th>
+
+                                    <td>3,985</td>
+
+                                    <td>319</td>
+
+                                    <td>
+                                        <i class=" fas fa-arrow-down text-warning mr-3"> </i> 46,53%
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">/argon/charts.html</th>
+
+                                    <td>3,513</td>
+
+                                    <td>294</td>
+
+                                    <td>
+                                        <i class=" fas fa-arrow-down text-warning mr-3"> </i> 36,49%
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">/argon/tables.html</th>
+
+                                    <td>2,050</td>
+
+                                    <td>147</td>
+
+                                    <td>
+                                        <i class=" fas fa-arrow-up text-success mr-3"> </i> 50,87%
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th scope="row">/argon/profile.html</th>
+
+                                    <td>1,795</td>
+
+                                    <td>190</td>
+
+                                    <td>
+                                        <i class=" fas fa-arrow-down text-danger mr-3"> </i> 46,53%
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="card bg-gradient-primary" type="button" (click)="openModal(test)">
+                <div class="card-body">
+                    <h5 class="h3 text-center text-white">Permohonan Lesen Baru</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card bg-gradient-primary" type="button" (click)="openModal2(permohonan)">
+                <div class="card-body">
+                    <h5 class="h3 text-center text-white">Senarai Permohonan</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card bg-gradient-primary" type="button" (click)="openModal(pembatalan)">
+                <div class="card-body">
+                    <h5 class="h3 text-center text-white">Pembatalan Lesen</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="card bg-gradient-primary" type="button" (click)="openModal2(kilang)">
+                <div class="card-body">
+                    <h5 class="h3 text-center text-white">Pemeriksaan Kilang</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h5 class="h3 mb-0">Jumlah permohonan semasa</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <div class="amchart" id="epd1"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h5 class="h3 mb-0">Jumlah premis mengikut lokasi</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <div class="amchart" id="epd2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h5 class="h3 mb-0">Jumlah kilang mengikut lokasi</h5>
+                </div>
+                <div class="card-body">
+                    <div class="chart">
+                        <div class="amchart" id="epd3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #test>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Pemohonan Lesen Baru
+        </h6>
+
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nama pemohon</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nama syarikat</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Jenis lesen</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Sila pilih</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No IC pemohon</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Kategori pemohon</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Lesen Baharu</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Kelas racun dipohon</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Sila pilih</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-date-input" class="form-control-label">Tarikh berdaftar</label>
+                    <input class="form-control" type="date" value="2018-11-23" id="example-date-input">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-date-input" class="form-control-label">Alamat syarikat</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No. telefon</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Email</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No. faks</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" (click)="confirm()" [disabled]="!registerForm.valid">
+            Simpan
+        </button>
+
+        <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+            Tutup
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #permohonan>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Senarai Permohonan
+        </h6>
+
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal2()">
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">
+                                    Total traffic
+                                </h5>
+
+                                <span class="h2 font-weight-bold mb-0"> 350,897 </span>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+                                    <i class="ni ni-active-40"> </i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-3 mb-0 text-sm">
+                            <span class="text-success mr-2">
+                                <i class="fa fa-arrow-up"> </i> 3.48%
+                            </span>
+
+                            <span class="text-nowrap"> Since last month </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card card-stats">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col">
+                                <h5 class="card-title text-uppercase text-muted mb-0">
+                                    New users
+                                </h5>
+
+                                <span class="h2 font-weight-bold mb-0"> 2,356 </span>
+                            </div>
+
+                            <div class="col-auto">
+                                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                                    <i class="ni ni-chart-pie-35"> </i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="mt-3 mb-0 text-sm">
+                            <span class="text-success mr-2">
+                                <i class="fa fa-arrow-up"> </i> 3.48%
+                            </span>
+
+                            <span class="text-nowrap"> Since last month </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="h3 mb-0">Senarai permohonan</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="dataTables_wrapper py-0">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_length" id="datatable_length">
+                                        <label>
+                                            papar
+                                            <select name="datatable_length" aria-controls="datatable"
+                                                class="form-control form-control-sm" (change)="entriesChange($event)">
+                                                <option value="5" [selected]="entries==5">5</option>
+                                                <option value="10" [selected]="entries==10">10</option>
+                                                <option value="20" [selected]="entries==20">20</option>
+                                                <option value="-1" [selected]="entries==-1">All</option>
+                                            </select>
+                                            rekod
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div id="datatable_filter" class="dataTables_filter">
+                                        <label>
+                                            <input type="search" class="form-control form-control-sm"
+                                                placeholder="Search records" aria-controls="datatable"
+                                                (keyup)="filterTable($event)" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+                                [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries:undefined"
+                                [rows]="temp" (activate)="onActivate($event)">
+
+                                <ngx-datatable-column name="iddaftar">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>ID Pendaftaran</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="nama">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Nama pemohon</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="syarikat">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Nama syarikat</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="tel">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>No Tel</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="status">
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <span *ngIf="row.status == '1'"
+                                            class="badge badge-pill badge-success">Lulus</span>
+                                        <span *ngIf="row.status == '2'"
+                                            class="badge badge-pill badge-danger">Gagal</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <!-- <button class="btn btn-success" type="button" (click)="confirm()" [disabled]="!registerForm.valid">
+            Simpan
+        </button> -->
+
+        <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal2()">
+            Tutup
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #pembatalan>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Pembatalan Lesen
+        </h6>
+
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal()">
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nama pemohon</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Nama syarikat</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No IC pemohon</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-date-input" class="form-control-label">Tarikh berdaftar</label>
+                    <input class="form-control" type="date" value="2018-11-23" id="example-date-input">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Jenis lesen</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>Sila pilih</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-date-input" class="form-control-label">Alamat syarikat</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No. telefon</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">Email</label>
+                    <input class="form-control" type="text">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <label for="example-text-input" class="form-control-label">No. faks</label>
+                    <input class="form-control" type="text">
+                </div>
+                <div class="form-group">
+                    <label for="example-date-input" class="form-control-label">Diskripsi</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" (click)="confirm()" [disabled]="!registerForm.valid">
+            Simpan
+        </button>
+
+        <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal()">
+            Tutup
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #kilang>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Pemeriksaan Kilang
+        </h6>
+
+        <button aria-label="Close" class="close" data-dismiss="modal" type="button" (click)="closeModal2()">
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="h3 mb-0">Jumlah kilang yang melepasi KPI mengikut bulan</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="chart">
+                            <div class="amchart" id="prem11"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="h3 mb-0">Senarai pemeriksaan kilang</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="dataTables_wrapper py-0">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6">
+                                    <div class="dataTables_length" id="datatable_length">
+                                        <label>
+                                            papar
+                                            <select name="datatable_length" aria-controls="datatable"
+                                                class="form-control form-control-sm" (change)="entriesChange($event)">
+                                                <option value="5" [selected]="entries==5">5</option>
+                                                <option value="10" [selected]="entries==10">10</option>
+                                                <option value="20" [selected]="entries==20">20</option>
+                                                <option value="-1" [selected]="entries==-1">All</option>
+                                            </select>
+                                            rekod
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6">
+                                    <div id="datatable_filter" class="dataTables_filter">
+                                        <label>
+                                            <input type="search" class="form-control form-control-sm"
+                                                placeholder="Search records" aria-controls="datatable"
+                                                (keyup)="filterTable($event)" />
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+                                [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries:undefined"
+                                [rows]="temp" (activate)="onActivate($event)">
+
+                                <ngx-datatable-column name="iddaftar">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>ID Pendaftaran</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="nama">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Nama pemohon</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="syarikat">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Nama syarikat</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="tel">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>No Tel</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="status">
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <span *ngIf="row.status == '1'"
+                                            class="badge badge-pill badge-success">Lulus</span>
+                                        <span *ngIf="row.status == '2'"
+                                            class="badge badge-pill badge-danger">Gagal</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="h3 mb-0">Pemeriksaan Kilang</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">No. ID</label>
+                                    <input class="form-control" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Nama kilang</label>
+                                    <input class="form-control" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Negeri</label>
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Selangor</option>
+                                        <option>Johor</option>
+                                        <option>Perak</option>
+                                        <option>Melaka</option>
+                                        <option>Kedah</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">No. IC</label>
+                                    <input class="form-control" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Tarikh
+                                        pemeriksaan</label>
+                                    <input class="form-control" type="date" value="2018-11-23" id="example-date-input">
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <label for="example-text-input" class="form-control-label">Status</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="customRadioInline1" name="customRadioInline1"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadioInline1">Lulus</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadioInline2">Gagal</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-success" type="button" (click)="confirm()" >
+            Hantar
+        </button>
+
+        <button class="btn btn-outline-danger ml-auto" data-dismiss="modal" type="button" (click)="closeModal2()">
+            Tutup
+        </button>
+    </div>
+</ng-template>
