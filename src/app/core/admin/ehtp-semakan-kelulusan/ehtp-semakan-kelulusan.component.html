@@ -163,3 +163,150 @@
         </div>
     </div>
 </div>
+
+<ng-template #createUser>
+    <div class="modal-header bg-default">
+        <h6 class="modal-title text-white my-auto" id="modal-title-default">
+            Create New User
+        </h6>
+
+        <button
+            aria-label="Close"
+            class="close"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            <span aria-hidden="true" class="text-white my-auto"> × </span>
+        </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        <h5 class="h3 mb-0">Senarai permohonan racun berbahaya</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="dataTables_wrapper">
+                            <div class="row">
+                              <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="datatable_length">
+                                  <label>
+                                    Papar
+                                    <select
+                                      name="datatable_length"
+                                      aria-controls="datatable"
+                                      class="form-control form-control-sm"
+                                      (change)="entriesChange($event)"
+                                    >
+                                      <option value="5" [selected]="entries==5">5</option>
+                                      <option value="10" [selected]="entries==10">10</option>
+                                      <option value="20" [selected]="entries==20">20</option>
+                                      <option value="-1" [selected]="entries==-1">All</option>
+                                    </select>
+                                    rekod
+                                    </label>
+                                </div>
+                              </div>
+                              <div class="col-sm-12 col-md-6">
+                                <div id="datatable_filter" class="dataTables_filter">
+                                  <label>
+                                    <input
+                                      type="search"
+                                      class="form-control form-control-sm"
+                                      placeholder="Search records"
+                                      aria-controls="datatable"
+                                      (keyup)="filterTable($event)"
+                                    />
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                        
+                            <ngx-datatable
+                              class="bootstrap selection-cell"
+                              [columnMode]="'force'"
+                              [headerHeight]="50"
+                              [footerHeight]="50"
+                              [rowHeight]="'auto'"
+                              [limit]="entries != -1 ? entries:undefined"
+                              [rows]="temp"
+                              (activate)="onActivate($event)"
+                            >
+                        
+                                <ngx-datatable-column name="rujukan">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>No rujukan</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="tarikh">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>Tarikh pendaftaran</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="status">
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <span *ngIf="row.status == '1'" class="badge badge-pill badge-success">aktif</span>
+                                        <span *ngIf="row.status == '2'" class="badge badge-pill badge-danger">tidak aktif</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="pengesahan">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>no surat pengesahan</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column name="tempoh">
+                                    <ng-template ngx-datatable-header-template>
+                                        <span>tempoh sah</span>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                                <ngx-datatable-column>
+                                    <ng-template let-row="row" ngx-datatable-cell-template>
+                                        <a class="btn btn-sm btn-secondary">
+                                            <i class="fas fa-eye text-default"></i>
+                                        </a>
+                                        <a class="btn btn-sm btn-warning">
+                                            <i class="fas fa-print text-white"></i>
+                                        </a>
+                                    </ng-template>
+                                </ngx-datatable-column>
+                            </ngx-datatable>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-secondary">
+                        <h5 class="h3 mb-0"></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button 
+            class="btn btn-success"
+            type="button"
+            (click)="confirm()"
+            [disabled]="!registerForm.valid"
+        >
+            Create
+        </button>
+
+        <button
+            class="btn btn-outline-danger ml-auto"
+            data-dismiss="modal"
+            type="button"
+            (click)="closeModal()"
+        >
+            Close
+        </button>
+    </div>
+</ng-template>

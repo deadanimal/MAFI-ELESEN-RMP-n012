@@ -1,7 +1,9 @@
-import { Component, NgZone, OnDestroy, OnInit } from "@angular/core";
+import { Component, NgZone, OnDestroy, OnInit, TemplateRef } from "@angular/core";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import swal from 'sweetalert2';
 
 export enum SelectionType {
   single = "single",
@@ -17,6 +19,13 @@ export enum SelectionType {
   styleUrls: ['./ehtp-semakan-kelulusan.component.scss']
 })
 export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
+
+  // Modal
+  modal: BsModalRef;
+  modalConfig = {
+    keyboard: true,
+    class: "modal-dialog-centered"
+  };
 
   private chart1: any;
 
@@ -62,7 +71,8 @@ export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
     },
   ];
   SelectionType = SelectionType;
-  constructor(private zone: NgZone) {
+
+  constructor(private zone: NgZone, private modalService: BsModalService,) {
     this.temp = this.rows.map((prop, key) => {
       return {
         ...prop,
@@ -391,6 +401,47 @@ export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
 
     chart.cursor = new am4charts.XYCursor();
     this.chart1 = chart;
+  }
+
+  openModal(modalRef: TemplateRef<any>) {
+    this.modal = this.modalService.show(modalRef, {class: 'modal-lg'});
+  }
+
+  closeModal() {
+    this.modal.hide()
+  }
+
+  confirm() {
+    swal.fire({
+      title: "Confirmation",
+      text: "Are you sure to create this new user?",
+      type: "info",
+      buttonsStyling: false,
+      confirmButtonClass: "btn btn-info",
+      confirmButtonText: "Confirm",
+      showCancelButton: true,
+      cancelButtonClass: "btn btn-danger",
+      cancelButtonText: "Cancel"
+    }).then((result) => {
+      if (result.value) {
+        this.register()
+      }
+    })
+  }
+
+  register() {
+    swal.fire({
+      title: "Success",
+      text: "A new user has been created!",
+      type: "success",
+      buttonsStyling: false,
+      confirmButtonClass: "btn btn-success",
+      confirmButtonText: "Close"
+    }).then((result) => {
+      if (result.value) {
+        this.modal.hide()
+      }
+    })
   }
 
 }

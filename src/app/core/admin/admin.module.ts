@@ -12,6 +12,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 import { RouterModule } from '@angular/router';
 import { AdminRoutes } from './admin.routing';
@@ -62,7 +63,8 @@ import { IserviceFaqComponent } from './iservice-faq/iservice-faq.component';
     ReactiveFormsModule,
     LoadingBarModule,
     NgxDatatableModule,
-    RouterModule.forChild(AdminRoutes)
+    RouterModule.forChild(AdminRoutes),
+    RatingModule.forRoot()
   ]
 })
 export class AdminModule { }

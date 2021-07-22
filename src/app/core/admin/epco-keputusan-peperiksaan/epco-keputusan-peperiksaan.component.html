@@ -1,1 +1,146 @@
-<p>epco-keputusan-peperiksaan works!</p>
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">Keputusan Peperiksaan</h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-home text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="crd-header bg-secondary">
+                    <h5 class="h3 mb-0">Senarai Peperiksaan</h5>
+                </div>
+                <div class="card-body">
+                    <div class="dataTables_wrapper py-4">
+                        <div class="row">
+                          <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="datatable_length">
+                              <label>
+                                papar
+                                <select
+                                  name="datatable_length"
+                                  aria-controls="datatable"
+                                  class="form-control form-control-sm"
+                                  (change)="entriesChange($event)"
+                                >
+                                  <option value="5" [selected]="entries == 5">
+                                    5
+                                  </option>
+                                  <option value="10" [selected]="entries == 10">
+                                    10
+                                  </option>
+                                  <option value="20" [selected]="entries == 20">
+                                    20
+                                  </option>
+                                  <option value="-1" [selected]="entries == -1">
+                                    All
+                                  </option>
+                                </select>
+                                rekod
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-sm-12 col-md-6">
+                            <div id="datatable_filter" class="dataTables_filter">
+                              <label>
+                                <input
+                                  type="search"
+                                  class="form-control form-control-sm"
+                                  placeholder="Search records"
+                                  aria-controls="datatable"
+                                  (keyup)="filterTable($event)"
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+    
+                        <ngx-datatable
+                        class="bootstrap selection-cell"
+                        [columnMode]="'force'"
+                        [headerHeight]="50"
+                        [footerHeight]="50"
+                        [rowHeight]="'auto'"
+                        [limit]="entries != -1 ? entries : undefined"
+                        [rows]="temp"
+                        (activate)="onActivate($event)"
+                      >
+    
+                        <ngx-datatable-column name="ic">
+                          <ng-template ngx-datatable-header-template>
+                            <span>no ic</span>
+                          </ng-template>
+                        </ngx-datatable-column>
+    
+                        <ngx-datatable-column name="nama">
+                          <ng-template ngx-datatable-header-template>
+                            <span>Nama Pemohon</span>
+                          </ng-template>
+                        </ngx-datatable-column>
+    
+                        <ngx-datatable-column name="syarikat">
+                          <ng-template ngx-datatable-header-template>
+                            <span>nama syarikat</span>
+                          </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="jenis">
+                            <ng-template ngx-datatable-header-template>
+                              <span>Jenis lesen</span>
+                            </ng-template>
+                          </ngx-datatable-column>
+    
+                        <ngx-datatable-column name="tarikh">
+                          <ng-template ngx-datatable-header-template>
+                            <span>tarikh exam</span>
+                          </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column name="markah"></ngx-datatable-column>
+    
+                        <ngx-datatable-column name="status">
+                          <ng-template let-row="row" ngx-datatable-cell-template>
+                            <span
+                              *ngIf="row.status == '1'"
+                              class="badge badge-pill badge-success"
+                              >Lulus</span
+                            >
+                            <span
+                              *ngIf="row.status == '2'"
+                              class="badge badge-pill badge-danger"
+                              >Gagal</span
+                            >
+                          </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column>
+                            <ng-template let-row="row" ngx-datatable-cell-template>
+                                <a class="btn btn-primary text-white">
+                                    Kemaskini
+                                </a>
+                            </ng-template>
+                        </ngx-datatable-column>
+                      </ngx-datatable>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

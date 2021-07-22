@@ -1,1 +1,278 @@
-<p>iservice-naziran works!</p>
+<div class="header pb-6">
+  <div class="container-fluid">
+    <div class="header-body">
+      <div class="row align-items-center py-4">
+        <div class="col-lg-6 col-7">
+          <h6 class="h2 text-dark d-inline-block mb-0">
+            Naziran (self assessment)
+          </h6>
+
+          <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+            <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class="breadcrumb-item">
+                <a href="javascript:void(0)">
+                  <i class="fas fa-file-invoice text-dark"> </i>
+                </a>
+              </li>
+            </ol>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--6">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="vard-header bg-secondary">
+          <h5 class="h3 mb-0">Jumlah Data Naziran</h5>
+        </div>
+        <div class="card-body">
+          <div class="chart">
+            <div class="amchart" id="admnaz1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h6 class="text-muted text-uppercase ls-1 mb-1">Senarai</h6>
+          <h5 class="h3 mb-0">Naziran (Self assessment)</h5>
+        </div>
+        <div class="card-body">
+          <div class="dataTables_wrapper">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="dataTables_length" id="datatable_length">
+                  <label>
+                    Show
+                    <select
+                      name="datatable_length"
+                      aria-controls="datatable"
+                      class="form-control form-control-sm"
+                      (change)="entriesChange($event)"
+                    >
+                      <option value="5" [selected]="entries == 5">5</option>
+                      <option value="10" [selected]="entries == 10">10</option>
+                      <option value="15" [selected]="entries == 15">15</option>
+                      <option value="-1" [selected]="entries == -1">All</option>
+                    </select>
+                    entries
+                  </label>
+                </div>
+              </div>
+              <div class="col-sm-12 col-md-6">
+                <div id="datatable_filter" class="dataTables_filter">
+                  <label>
+                    <input
+                      type="search"
+                      class="form-control form-control-sm"
+                      placeholder="Search records"
+                      aria-controls="datatable"
+                      (keyup)="filterTable($event)"
+                    />
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <ngx-datatable
+              class="bootstrap selection-cell"
+              [columnMode]="'force'"
+              [headerHeight]="50"
+              [footerHeight]="50"
+              [rowHeight]="'auto'"
+              [limit]="entries != -1 ? entries : undefined"
+              [rows]="temp"
+              (activate)="onActivate($event)"
+            >
+              <ngx-datatable-column name="idpermohonan">
+                <ng-template ngx-datatable-header-template>
+                  <span>No. ID</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Name">
+                <ng-template ngx-datatable-header-template>
+                  <span>Nama pegawai</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column name="Start">
+                <ng-template ngx-datatable-header-template>
+                  <span>Tarikh naziran</span>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <button
+                    (click)="openModal(edit)"
+                    class="btn btn-sm text-white bg-primary"
+                  >
+                    Edit
+                  </button>
+                </ng-template>
+              </ngx-datatable-column>
+            </ngx-datatable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #edit>
+  <div class="modal-header bg-default">
+    <h6 class="modal-title text-white my-auto" id="modal-title-default">
+      Maklum Balas
+    </h6>
+
+    <button
+      aria-label="Close"
+      class="close"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      <span aria-hidden="true" class="text-white my-auto"> × </span>
+    </button>
+  </div>
+
+  <div class="modal-body">
+    <div class="col-lg-12 mb-3">
+      <rating
+        class="ml-2"
+        [max]="5"
+        [(ngModel)]="y"
+        [customTemplate]="tt"
+      ></rating>
+      <div class="card">
+        <pre
+          class="card-block card-header"
+          style="margin: 15px 3"
+        > <b>(<i>Rate:</i> {{y}})</b> </pre>
+      </div>
+      <ng-template #tt let-i="index" let-v="value">
+        <button class="btn btn-{{ i < v ? 'success' : 'secondary' }} ml-3">
+          {{ i < v ? " &#9733; " : " &#9734; " }}
+        </button>
+      </ng-template>
+    </div>
+
+    <div class="col-lg-12">
+      <div class="form-group">
+        <label
+          >Sila nyatakan cadangan tuan/puan untuk penambahbaikan kami di jabatan
+          ini.</label
+        >
+        <textarea class="form-control" rows="4"></textarea>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <form>
+          <div class="form-group">
+            <label for="example-text-input" class="form-control-label"
+              >Nama</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              placeholder=""
+              id="example-text-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="example-tel-input" class="form-control-label"
+              >Nombor KP</label
+            >
+            <input class="form-control" type="tel" id="example-tel-input" />
+          </div>
+          <div class="form-group">
+            <label for="example-number-input" class="form-control-label"
+              >Nombor Kad Pengenalan</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              placeholder="xxxxxxxxxxxxxx - tanpa '-'"
+              id="example-number-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="example-text-input" class="form-control-label"
+              >Jantina</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              placeholder=""
+              id="example-text-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="example-number-input" class="form-control-label"
+              >Umur</label
+            >
+            <input
+              class="form-control"
+              type="number"
+              value="23"
+              id="example-number-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="example-text-input" class="form-control-label"
+              >Alamat</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <label for="example-text-input" class="form-control-label"
+              >Pekerjaan</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              value=""
+              id="example-text-input"
+            />
+          </div>
+          <div class="form-group">
+            <label for="example-number-input" class="form-control-label"
+              >Pendapatan</label
+            >
+            <input
+              class="form-control"
+              type="number"
+              placeholder="RM"
+              id="example-number-input"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <button class="btn btn-success" type="button" (click)="confirm()">
+      Hantar
+    </button>
+
+    <button
+      class="btn btn-outline-danger ml-auto"
+      data-dismiss="modal"
+      type="button"
+      (click)="closeModal()"
+    >
+      Tutup
+    </button>
+  </div>
+</ng-template>
