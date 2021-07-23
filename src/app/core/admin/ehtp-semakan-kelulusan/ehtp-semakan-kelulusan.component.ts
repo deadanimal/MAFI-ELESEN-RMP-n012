@@ -72,8 +72,57 @@ export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
   ];
   SelectionType = SelectionType;
 
+  entries2: number = 5;
+  selected2: any[] = [];
+  temp2 = [];
+  activeRow2: any;
+  rows2: any = [
+    {
+      rujukan:"1009283",
+      tarikh:"12/3/2021",
+      status:"1",
+      pengesahan:"1234",
+      tempoh:"6 bulan",
+    },
+    {
+      rujukan:"1009432",
+      tarikh:"2/5/2021",
+      status:"2",
+      pengesahan:"4213",
+      tempoh:"6 bulan",
+    },
+    {
+      rujukan:"4390321",
+      tarikh:"17/4/2021",
+      status:"1",
+      pengesahan:"2341",
+      tempoh:"4 bulan",
+    },
+    {
+      rujukan:"4390234",
+      tarikh:"24/2/2021",
+      status:"2",
+      pengesahan:"1432",
+      tempoh:"6 bulan",
+    },
+    {
+      rujukan:"1210923",
+      tarikh:"29/3/2021",
+      status:"1",
+      pengesahan:"1324",
+      tempoh:"9 bulan",
+    },
+  ];
+  SelectionType2 = SelectionType;
+
   constructor(private zone: NgZone, private modalService: BsModalService,) {
     this.temp = this.rows.map((prop, key) => {
+      return {
+        ...prop,
+        id: key,
+      };
+    });
+    this.temp2 = this.rows2.map((prop, key) => {
       return {
         ...prop,
         id: key,
@@ -82,6 +131,9 @@ export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
   }
   entriesChange($event) {
     this.entries = $event.target.value;
+  }
+  entriesChange2($event) {
+    this.entries2 = $event.target.value;
   }
   filterTable($event) {
     let val = $event.target.value;
@@ -94,12 +146,30 @@ export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
       return false;
     });
   }
+  filterTable2($event) {
+    let val = $event.target.value;
+    this.temp2 = this.rows2.filter(function (d) {
+      for (var key in d) {
+        if (d[key].toLowerCase().indexOf(val) !== -1) {
+          return true;
+        }
+      }
+      return false;
+    });
+  }
   onSelect({ selected }) {
     this.selected.splice(0, this.selected.length);
     this.selected.push(selected);
   }
+  onSelect2({ selected2 }) {
+    this.selected2.splice(0, this.selected2.length);
+    this.selected2.push(selected2);
+  }
   onActivate(event) {
     this.activeRow = event.row;
+  }
+  onActivate2(event) {
+    this.activeRow2 = event.row2;
   }
 
   ngOnInit() {
@@ -404,7 +474,7 @@ export class EhtpSemakanKelulusanComponent implements OnInit, OnDestroy {
   }
 
   openModal(modalRef: TemplateRef<any>) {
-    this.modal = this.modalService.show(modalRef, {class: 'modal-lg'});
+    this.modal = this.modalService.show(modalRef, {class: 'modal-xl'});
   }
 
   closeModal() {

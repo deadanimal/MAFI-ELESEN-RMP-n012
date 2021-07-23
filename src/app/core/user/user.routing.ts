@@ -26,20 +26,7 @@ export const UserRoutes: Routes = [
             },
             {
                 path: 'e-premis',
-                children: [
-                    {
-                        path: 'main',
-                        component: EpremisMainComponent
-                    },
-                    {
-                        path: 'permohonan',
-                        component: EpremisSenaraiPemohonanComponent
-                    },
-                    {
-                        path: 'pemeriksaan-kilang',
-                        component: EpremisPemeriksaanKilangComponent
-                    }
-                ]
+                component: EpremisMainComponent
             },
             {
                 path: 'e-htp',

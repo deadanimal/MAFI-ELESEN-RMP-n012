@@ -29,13 +29,13 @@ export const ROUTES: RouteInfo[] = [
     path: '/admin/dashboard',
     title: 'Dashboard',
     type: 'link',
-    icontype: 'fas fa-home text-purple'
+    icontype: 'fas fa-home text-warning'
   },
   {
     path: '/admin/e-premis',
     title: 'E-premis/Kilang',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-industry text-warning',
     collapse: 'e-premis',
     isCollapsed: true,
     children: [
@@ -47,7 +47,7 @@ export const ROUTES: RouteInfo[] = [
     path: '/admin/e-htp',
     title: 'E-HTP',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-file-alt text-warning',
     collapse: 'e-htp',
     isCollapsed: true,
     children: [
@@ -59,7 +59,7 @@ export const ROUTES: RouteInfo[] = [
     path: '/admin/e-pco',
     title: 'E-PCO',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-file-invoice text-warning',
     collapse: 'e-pco',
     isCollapsed: true,
     children: [
@@ -73,7 +73,7 @@ export const ROUTES: RouteInfo[] = [
     path: '/admin/i-service',
     title: 'i-Service',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-hands-helping text-warning',
     collapse: 'i-service',
     isCollapsed: true,
     children: [
@@ -84,21 +84,21 @@ export const ROUTES: RouteInfo[] = [
   },
   {
     path: '/admin/report',
-    title: 'Reporting',
+    title: 'Laporan',
     type: 'link',
-    icontype: 'fas fa-chart-bar text-red'
+    icontype: 'fas fa-flag text-warning'
   },
   {
     path: '/admin/audit-trail',
     title: 'Audit Trails',
     type: 'link',
-    icontype: 'fas fa-chart-bar text-red'
+    icontype: 'fas fa-chart-bar text-warning'
   },
   {
     path: '/admin/management',
-    title: 'Management',
+    title: 'Pengurusan Sistem',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-users-cog text-warning',
     collapse: 'management',
     isCollapsed: true,
     children: [
@@ -117,21 +117,14 @@ export const ROUTESUSER: RouteInfo[] = [
   {
     path: '/user/e-premis',
     title: 'e-Premis/Kilang',
-    type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
-    collapse: 'e-premis',
-    isCollapsed: true,
-    children: [
-      { path: 'main', title: 'Dashboard', type: 'link' },
-      { path: 'permohonan', title: 'Senarai Permohonan', type: 'link' },
-      { path: 'pemeriksaan-kilang', title: 'Pemeriksaan Kilang', type: 'link' }
-    ]
+    type: 'link',
+    icontype: 'fas fa-industry text-warning',
   },
   {
     path: '/user/e-htp',
     title: 'e-HTP',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-file-alt text-warning',
     collapse: 'e-htp',
     isCollapsed: true,
     children: [
@@ -144,7 +137,7 @@ export const ROUTESUSER: RouteInfo[] = [
     path: '/user/e-pco',
     title: 'e-PCO',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-file-invoice text-warning',
     collapse: 'e-pco',
     isCollapsed: true,
     children: [
@@ -158,13 +151,13 @@ export const ROUTESUSER: RouteInfo[] = [
     path: '/user/i-latihan',
     title: 'i-Latihan',
     type: 'link',
-    icontype: 'fas fa-home text-purple'
+    icontype: 'fas fa-dumbbell text-warning'
   },
   {
     path: '/user/i-service',
     title: 'i-Service',
     type: 'sub',
-    icontype: 'fas fa-file-invoice text-pink',
+    icontype: 'fas fa-hands-helping text-warning',
     collapse: 'i-service',
     isCollapsed: true,
     children: [
